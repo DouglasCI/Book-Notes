@@ -1,0 +1,59 @@
+<%- include("partials/header.ejs") %>
+    </div>
+
+  <% if(locals.book) { %>
+    <div class="container mb-4 px-3 border border-dark rounded">
+      <div class="row">
+        <p id="title" class="display-5 gowun-batang-regular pb-4"><%= book.title %></p>
+      </div>
+      <div class="row mb-4">
+        <div class="col">
+          <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-L.jpg" class="img-float-fluid rounded mt-2 me-4 float-start" alt="book cover">
+          <p id="author" class="lead fs-3 m-0"><small class="text-muted">by</small> <%= book.author %></p>
+          <p id="isbn" class="lead fs-6 opacity-75 m-0">ISBN: <%= book.isbn %></p>
+          <p id="date_read" class="opacity-75 fw-bold py-2 m-0">Date: <%= book.date_read.toLocaleDateString("en-US") %></p>
+          <p id="rating" class="opacity-75 fw-bold mb-2">Rating: <%= book.rating %>/10</p>
+          <div>
+            <p id="synopsis" class="gowun-batang-regular text-clamp"><%= book.synopsis %></p>
+            <button id="expand" onclick="expandText()" class="btn-main btn-muted">Expand</button>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div id="notes" class="row text-break">
+        <p id="title" class="display-6 gowun-batang-regular">Notes</p>
+        <p id="content" class="gowun-batang-regular fs-6"><%= book.notes %></p>
+      </div>
+      <div class="row m-0 pb-2">
+        <a id="edit" class="btn-main btn-yellow me-2" href="/edit/<%= book.id %>">
+          Edit
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
+          </svg>
+        </a>
+        <a id="delete" class="btn-main btn-red" href="/delete/<%= book.id %>">Delete</a>
+      </div>
+    </div>
+    <%- include("partials/footer.ejs") %>
+  <% } %>
+
+  <script>
+    let synopsis = document.getElementById("synopsis");
+    let expandButton = document.getElementById("expand");
+
+    if(synopsis.clientHeight === synopsis.scrollHeight) {
+      expandButton.style.display = "none";
+    }
+
+    function expandText() {
+      if(synopsis.classList.contains("text-clamp")) {
+        synopsis.classList.remove("text-clamp");
+        expandButton.innerHTML = "Hide";
+      } else {
+        synopsis.classList.add("text-clamp")
+        expandButton.innerHTML = "Expand";
+      }
+    }
+  </script>
+</body>
+</html>

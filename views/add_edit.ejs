@@ -1,0 +1,68 @@
+<%- include("partials/header.ejs") %>
+    </div>
+
+    <% let actionType = "/add"; %>
+    <% let title = author = isbn = date_read = rating = synopsis = notes = ""; %>
+    <% if(locals.book) { %>
+      <% actionType = "/edit/" + book.id; %>
+      <% title = book.title; %>
+      <% author = book.author; %>
+      <% isbn = book.isbn; %>
+      <% date_read = book.date_read.toLocaleDateString("en-CA"); %>
+      <% rating = book.rating; %>
+      <% synopsis = book.synopsis; %>
+      <% notes = book.notes; %>
+    <% } %>
+    <div class="container">
+      <form action="<%= actionType %>" method="post">
+        <div class="row">
+          <div class="col col-lg-6 mb-3">
+            <label class="form-label lead fs-3">Title</label>
+            <input name="title" class="form-control" value="<%= title %>" type="text" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-lg-6 mb-3">
+            <label class="form-label lead fs-3">Author</label>
+            <input name="author" class="form-control" value="<%= author %>" type="text" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-lg-6 mb-3">
+            <label class="form-label lead fs-3">ISBN</label>
+            <input name="isbn" class="form-control" value="<%= isbn %>" type="text" minlength="10" maxlength="13" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col mb-3">
+            <label class="form-label lead fs-3">Date</label>
+            <input name="date_read" class="form-control" value="<%= date_read %>" type="date" required>
+          </div>
+          <div class="col mb-3">
+            <label class="form-label lead fs-3">Rating</label>
+            <input name="rating" class="form-control" value="<%= rating %>" type="number" min="0" max="10">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col mb-3">
+            <label class="form-label lead fs-3">Synopsis</label>
+            <textarea name="synopsis" class="form-control" rows="8"><%= synopsis %></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col mb-3">
+            <label class="form-label lead fs-3">Take your notes</label>
+            <textarea name="notes" class="form-control" rows="12"><%= notes %></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col d-flex justify-content-center">
+            <input type="submit" class="btn-main btn-yellow btn-save" value="Save">
+          </div>
+        </div>
+      </form>
+      <%- include("partials/footer.ejs") %>
+    </div>
+  </div>
+</body>
+</html>

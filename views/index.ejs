@@ -1,0 +1,41 @@
+<%- include("partials/header.ejs") %>
+      <div class="row">
+        <a id="add" class="btn-main btn-yellow mb-3" href="/add">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+          </svg>
+          Add new book
+        </a>
+      </div>
+      <div class="row">
+        <a class="btn-main btn-muted btn-sort me-2" href="?sort=title">Sort by title</a>
+        <a class="btn-main btn-muted btn-sort me-2" href="?sort=date_read">Sort by newest</a>
+        <a class="btn-main btn-muted btn-sort" href="?sort=rating">Sort by rating</a>
+      </div>
+    </div>
+  
+    <% if(locals.books) { %>
+      <% for(const book of books) {%>
+        <div class="container mb-4 px-3 border border-dark rounded">
+          <div class="row">
+            <a id="title" class="display-6 gowun-batang-regular pb-4" href="/book/<%= book.id %>"><%= book.title %></a>
+          </div>
+          <div class="row">
+            <div class="col-4 col-xl-3">
+              <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-L.jpg" class="img-fluid rounded mt-2" alt="book cover">
+              <p id="author" class="lead fs-4 m-0"><small class="text-muted">by</small> <%= book.author %></p>
+              <p id="date_read" class="opacity-75 fw-bold py-2 m-0">Date: <%= book.date_read.toLocaleDateString("en-US") %></p>
+              <p id="rating" class="opacity-75 fw-bold mb-2">Rating: <%= book.rating %>/10</p>
+            </div>
+            <div class="col-8">
+              <p id="synopsis" class="gowun-batang-regular text-clamp"><%= book.synopsis %></p>
+            </div>
+          </div>
+        </div>
+      <% } %>
+    <% } %>
+    <%- include("partials/footer.ejs") %>
+  </div>
+</body>
+</html>

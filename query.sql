@@ -1,0 +1,14 @@
+-- RUN THIS FIRST
+CREATE DATABASE book_notes;
+
+-- RUN THIS SECOND SEPARATELY INSIDE THE NEWLY CREATED DATABASE
+CREATE TABLE books (
+  id SERIAL PRIMARY KEY,
+  title TEXT NOT NULL,
+  author TEXT NOT NULL,
+  isbn VARCHAR(13) NOT NULL,
+  date_read DATE,
+  rating INT,
+  synopsis TEXT,
+  notes TEXT
+);

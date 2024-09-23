@@ -1,0 +1,149 @@
+body { background-color: #FFFFF0; }
+
+a { text-decoration: none; }
+
+#title { color: #CD5C5C; }
+
+#notes #title { color: #556B2F; }
+
+#notes #content {
+  white-space: pre-wrap;
+}
+
+.text-clamp {
+  display: -webkit-box;
+  line-clamp: 14;
+  -webkit-line-clamp: 14;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ------------ Fonts ------------ */
+.gowun-batang-regular {
+  font-family: "Gowun Batang", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.gowun-batang-bold {
+  font-family: "Gowun Batang", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* ----------- Buttons ----------- */
+.btn-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: black;
+  padding: 5px;
+  border-radius: 3px;
+  border-color: rgb(129, 129, 129);
+  border-style: solid;
+  border-width: 1px;
+  text-align: center;
+  font-family: "Verdana";
+  transition: 0.2s;
+}
+
+.btn-yellow {
+  background-color: blanchedalmond;
+}
+
+.btn-yellow:hover {
+  background-color: rgb(228, 172, 89);
+}
+
+.btn-red {
+  color: whitesmoke;
+  background-color: #B22222;
+  border-color: black;
+}
+
+.btn-red:hover {
+  background-color: #800000;
+}
+
+.btn-muted {
+  color: rgb(121, 121, 121);
+  border-color: rgb(114, 114, 114);
+}
+
+.btn-muted:hover {
+  color: white;
+  background-color: rgb(114, 114, 114);
+}
+
+.btn-yellow#add {
+  max-width: 150px;
+  font-size: 15px;
+}
+
+.btn-yellow#edit ,.btn-red#delete {
+  max-width: 80px;
+  font-size: 15px;
+}
+
+.btn-muted#expand {
+  max-width: 140px;
+  font-size: 14px;
+}
+
+.btn-sort {
+  max-width: 120px;
+  font-size: 12px;
+}
+
+.btn-save {
+  width: 120px;
+  font-size: 15px;
+}
+
+/* -------- Media Queries -------- */
+@media (min-width: 1400px) {
+  .img-float-fluid {
+    width: 355px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1400px) {
+  .img-float-fluid {
+    width: 280px;
+  }
+  .text-clamp {
+    line-clamp: 9;
+    -webkit-line-clamp: 9;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .img-float-fluid {
+    width: 248px;
+  }
+  .text-clamp {
+    line-clamp: 7;
+    -webkit-line-clamp: 7;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .img-float-fluid {
+    width: 200px;
+  }
+  .text-clamp {
+    line-clamp: 5;
+    -webkit-line-clamp: 5;
+  }
+}
+
+@media (max-width: 768px) {
+  .img-float-fluid {
+    width: 180px;
+  }
+  .text-clamp {
+    line-clamp: 4;
+    -webkit-line-clamp: 4;
+  }
+}
